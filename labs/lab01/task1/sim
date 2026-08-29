@@ -1,0 +1,128 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2009.vpi";
+S_0x5a2427a009b0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x5a2427a00b40 .scope module, "tb" "tb" 3 6;
+ .timescale 0 0;
+v0x5a2427a19760_0 .var "t_a", 0 0;
+v0x5a2427a19820_0 .var "t_b", 0 0;
+v0x5a2427a198f0_0 .var "t_cin", 0 0;
+v0x5a2427a199f0_0 .net "t_cout", 0 0, L_0x5a2427a19c50;  1 drivers
+v0x5a2427a19ac0_0 .net "t_sum", 0 0, L_0x5a2427a19de0;  1 drivers
+v0x5a2427a19bb0_0 .var/str "vcd_file";
+S_0x5a24279c5cf0 .scope module, "DUT" "FA_Gate" 3 10, 4 10 0, S_0x5a2427a00b40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "sum";
+    .port_info 4 /OUTPUT 1 "cout";
+L_0x5a2427a19c50/d .functor OR 1, L_0x5a2427a1a140, L_0x5a2427a19f90, C4<0>, C4<0>;
+L_0x5a2427a19c50 .delay 1 (2,2,2) L_0x5a2427a19c50/d;
+L_0x5a2427a19de0/d .functor XOR 1, v0x5a2427a198f0_0, L_0x5a2427a1a370, C4<0>, C4<0>;
+L_0x5a2427a19de0 .delay 1 (2,2,2) L_0x5a2427a19de0/d;
+L_0x5a2427a19f90/d .functor AND 1, v0x5a2427a198f0_0, L_0x5a2427a1a370, C4<1>, C4<1>;
+L_0x5a2427a19f90 .delay 1 (2,2,2) L_0x5a2427a19f90/d;
+L_0x5a2427a1a140/d .functor AND 1, v0x5a2427a19760_0, v0x5a2427a19820_0, C4<1>, C4<1>;
+L_0x5a2427a1a140 .delay 1 (2,2,2) L_0x5a2427a1a140/d;
+L_0x5a2427a1a370/d .functor XOR 1, v0x5a2427a19760_0, v0x5a2427a19820_0, C4<0>, C4<0>;
+L_0x5a2427a1a370 .delay 1 (2,2,2) L_0x5a2427a1a370/d;
+v0x5a24279c5ed0_0 .net "a", 0 0, v0x5a2427a19760_0;  1 drivers
+v0x5a2427a19120_0 .net "b", 0 0, v0x5a2427a19820_0;  1 drivers
+v0x5a2427a191e0_0 .net "cin", 0 0, v0x5a2427a198f0_0;  1 drivers
+v0x5a2427a192b0_0 .net "cout", 0 0, L_0x5a2427a19c50;  alias, 1 drivers
+v0x5a2427a19370_0 .net "pc1", 0 0, L_0x5a2427a1a140;  1 drivers
+v0x5a2427a19480_0 .net "pc2", 0 0, L_0x5a2427a19f90;  1 drivers
+v0x5a2427a19540_0 .net "ps", 0 0, L_0x5a2427a1a370;  1 drivers
+v0x5a2427a19600_0 .net "sum", 0 0, L_0x5a2427a19de0;  alias, 1 drivers
+    .scope S_0x5a2427a00b40;
+T_0 ;
+    %vpi_func 3 21 "$value$plusargs" 32, "vcd=%s", v0x5a2427a19bb0_0 {0 0 0};
+    %cmpi/ne 0, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %vpi_call/w 3 22 "$dumpfile", v0x5a2427a19bb0_0 {0 0 0};
+    %vpi_call/w 3 23 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x5a24279c5cf0 {0 0 0};
+T_0.0 ;
+    %end;
+    .thread T_0;
+    .scope S_0x5a2427a00b40;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a19820_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5a2427a198f0_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call/w 3 36 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x5a2427a00b40;
+T_2 ;
+    %vpi_call/w 3 40 "$monitor", $time, " a=%b b=%b cin=%b | sum=%b cout=%b", v0x5a2427a19760_0, v0x5a2427a19820_0, v0x5a2427a198f0_0, v0x5a2427a19ac0_0, v0x5a2427a199f0_0 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "tb.v";
+    "FA_Gate.v";
