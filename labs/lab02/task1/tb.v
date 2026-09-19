@@ -15,11 +15,11 @@ module tb;
   wire t_y;
 
   // Instantiate DUT, connecting t_i0, t_i1, t_s and t_y to its ports.
-  dut DUT (
-    .i0(t_i0),
-    .i1(t_i1),
-    .s(t_s),
-    .y(t_y)
+  DUT DUT (
+    .I0(t_i0),
+    .I1(t_i1),
+    .S(t_s),
+    .Y(t_y)
   );
 
   // Waveform dump configuration
@@ -53,3 +53,5 @@ module tb;
              t_i0, t_i1, t_s, t_y);
 
 endmodule
+
+
